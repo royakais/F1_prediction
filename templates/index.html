@@ -419,7 +419,7 @@
 
 <script>
   // ── Data injected by Flask ─────────────────────────────
-  const DRIVER_DATA = {{ driver_data | tojson }};
+  const DRIVER_DATA = JSON.parse('{{ driver_data | tojson | safe }}');
   // DRIVER_DATA: { "Driver Name": { team, reg_pos, group }, ... }
 
   const TEAM_COLORS = {
