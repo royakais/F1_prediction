@@ -3,7 +3,8 @@
 This repository combines two connected parts of one project:
 
 1. **Machine Learning outputs** for F1 2026 predictions  
-2. **Flask website** that displays those predictions interactively
+2. **Flask website** that displays those predictions interactively deployed on render
+   website: https://f1-prediction-lab8.onrender.com/
 
 The website is directly powered by the ML artifacts stored in this repo, so they are related and intended to live together.
 
