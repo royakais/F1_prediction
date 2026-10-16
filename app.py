@@ -2,21 +2,25 @@ from flask import Flask, render_template, request, jsonify, Response
 import pandas as pd
 import joblib
 import requests
+from pathlib import Path
 
 app = Flask(__name__)
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+MODELS_DIR = BASE_DIR / "models"
 
 # ── Load classification pkl files ─────────────────────────────────────────────
-classification_model    = joblib.load("classification_model.pkl")
-classification_features = joblib.load("classification_features.pkl")
+classification_model = joblib.load(MODELS_DIR / "classification_model.pkl")
+classification_features = joblib.load(MODELS_DIR / "classification_features.pkl")
 
 # ── Load 2026 prediction features ─────────────────────────────────────────────
-X_predict = pd.read_excel("X_predict_preprocessed.xlsx")
+X_predict = pd.read_excel(DATA_DIR / "X_predict_preprocessed.xlsx")
 
 # ── Load regression lookup ────────────────────────────────────────────────────
-reg_df = pd.read_excel("predictions_2026.xlsx")
+reg_df = pd.read_excel(DATA_DIR / "predictions_2026.xlsx")
 
 # ── Load raw dataset ──────────────────────────────────────────────────────────
-raw_df = pd.read_excel("F1_dataset_2024-2026.xlsx")
+raw_df = pd.read_excel(DATA_DIR / "F1_dataset_2024-2026.xlsx")
 df_2026 = raw_df[raw_df['Year'] == 2026][['Driver', 'Constructor']].drop_duplicates()
 driver_team = {row['Driver']: row['Constructor'] for _, row in df_2026.iterrows()}
 
