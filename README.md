@@ -2,7 +2,7 @@
 
 This repository combines two connected parts of one project:
 
-1. **Machine Learning outputs** for F1 2026 predictions  
+1. **Machine Learning outputs** for the F1 2026 predictions  
 2. **Flask website** that displays those predictions interactively deployed on render
    website: https://f1-prediction-lab8.onrender.com/
 
